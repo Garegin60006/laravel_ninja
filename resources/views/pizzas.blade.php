@@ -74,9 +74,9 @@
             <a href="{{url('/home')}}">Home</a>
             @else
             <a href="{{route('/login')}}">Login</a>
-                @if(Route::has('register'))
+            @if(Route::has('register'))
             <a href="{{route('/register')}}">Login</a>
-                @endif
+            @endif
             @endauth
         </div>
         @endif
@@ -85,22 +85,21 @@
                 Pizza Listss
             </div>
 
-            <br>
-            @if($price > 15)
-            <p>This is expansive</p>
-            @elseif($price < 5) <p>this pizza is cheap</p>
-                @else
-                <p>this pizza is normally priced</p>
-                @endif
+            @for($i = 0; $i < count($pizzas); $i++) {{ $pizzas[$i]['type'] }} @endfor <br><br><br>
 
-                @unless($base === 'cheey crust')
-                <p>you dont have a cheesy crust</p>
-                @endunless
+                @foreach($pizzas as $pizza)
+                <div>
+                    @if($loop->first)
+                    <p>this is first element</p>
+                    @elseif($loop->last)
+                    <p>this is last element</p>
+                    @endif
+                  {{ $loop->index }}  {{ $pizza['type'] }} - {{ $pizza['base'] }} - {{ $pizza['price'] }}
+                </div>
+                @endforeach
 
-                @php
-                $name = 'adasda';
-                echo $name;
-                @endphp
+
+
         </div>
     </div>
 </body>
