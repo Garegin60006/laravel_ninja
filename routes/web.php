@@ -25,10 +25,13 @@ Route::get('/pizzas', function () {
             'base' => 'americano',
             'price' => 30
         ],
-
-
     ];
-    return view('pizzas', ['pizzas' => $pizzas]);
 
-    // return ['name' => 'Pak', 'age' => 45];
+
+
+    $name = request('name');
+    
+    $age = request('age');
+
+    return view('pizzas', ['pizzas' => $pizzas, 'name' => $name, 'age' => $age]);
 });
