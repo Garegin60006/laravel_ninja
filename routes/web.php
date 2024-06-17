@@ -13,3 +13,6 @@ Route::get('/pizzas', [PizzaController::class, 'index']);
 
 
 Route::get('/pizzas/{id}', [PizzaController::class, 'show'] );
+
+
+Route::get('/pizzas/create', [PizzaController::class, 'create'] );
